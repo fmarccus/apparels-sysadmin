@@ -97,7 +97,8 @@
                             </form>
                         </div>
                     </div>
-                    <a class="btn btn-dark d-block mb-3"href="{{route('apparel.create')}}">Create new apparel</a>
+                    <a class="btn btn-dark d-block mb-3" href="{{route('apparel.create')}}">Create new apparel</a>
+                    <a class="btn btn-light d-block mb-3" href="{{route('apparel.csvpage')}}">Upload a CSV</a>
                 </div>
                 <div class="col-sm-10">
                     <div class="row">

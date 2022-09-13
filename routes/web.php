@@ -44,6 +44,8 @@ Route::get('apparels/sort_type', [ApparelController::class, 'sort_type'])->name(
 Route::get('apparels/sort_price', [ApparelController::class, 'sort_price'])->name('apparel.sort_price');
 Route::get('apparels/create', [ApparelController::class, 'create'])->name('apparel.create');
 Route::post('apparels/store', [ApparelController::class, 'store'])->name('apparel.store');
+Route::get('apparels/csvpage', [ApparelController::class, 'csvpage'])->name('apparel.csvpage');
+Route::post('apparels/import', [ApparelController::class, 'import'])->name('apparel.import');
 Route::get('apparels/edit/{id}', [ApparelController::class, 'edit'])->name('apparel.edit');
 Route::post('apparels/update/{id}', [ApparelController::class, 'update'])->name('apparel.update');
 Route::get('apparels/destroy/{id}', [ApparelController::class, 'destroy'])->name('apparel.destroy');

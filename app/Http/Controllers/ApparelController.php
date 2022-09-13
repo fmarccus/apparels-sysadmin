@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Excel;
+use App\Imports\ApparelImport;
 
 
 
@@ -93,6 +95,20 @@ class ApparelController extends Controller
         } else {
             return redirect('login');
         }
+    }
+    //UPLOAD CSV PAGE
+    public function csvpage()
+    {
+        return view('apparels.csv-page');
+    }
+    //STORE CSV
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,txt'
+        ]);
+        Excel::import(new ApparelImport, $request->file);
+        return back()->with('success', '');
     }
     //SAVE APPAREL
     public function store(Request $request)
@@ -219,7 +235,7 @@ class ApparelController extends Controller
             if (File::exists($directory)) {
                 File::delete($directory);
             }
-            
+
             $apparel->delete();
             $apparel_dashboard->delete();
             return redirect()->to('/apparels')->with('deleted', '');
