@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Excel;
 use App\Imports\ApparelImport;
-
+use App\Models\Image;
 
 
 class ApparelController extends Controller
@@ -105,10 +105,34 @@ class ApparelController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:csv,txt'
+            'file' => 'required|mimes:csv,txt',
         ]);
         Excel::import(new ApparelImport, $request->file);
         return back()->with('success', '');
+    }
+    public function imagepage()
+    {
+        return view('apparels.upload_images');
+    }
+    public function upload_images(Request $request)
+    {
+
+        $request->validate([
+            'imageFile' => 'required',
+            'imageFile.*' => 'required|image|mimes:jpeg,jpg,png|max:4096'
+        ]);
+        if ($request->hasFile('imageFile')) {
+            foreach ($request->file('imageFile') as $img) {
+                $name = $img->getClientOriginalName();
+                $img->move(public_path() . '/images/', $name);
+                $imgData[] = $name;
+            }
+            $fileModal = new Image();
+            $fileModal->name = json_encode($imgData);
+            $fileModal->image_path = json_encode($imgData);
+            $fileModal->save();
+            return back()->with('success', '');
+        }
     }
     //SAVE APPAREL
     public function store(Request $request)

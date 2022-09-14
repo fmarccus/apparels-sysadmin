@@ -4,7 +4,7 @@ return [
     'activated'        => true, // active/inactive all logging
     'middleware'       => ['web', 'auth'],
     'route_path'       => 'admin/user-activity',
-    'admin_panel_path' => 'apparels/dashboard',
+    'admin_panel_path' => 'dashboard',
     'delete_limit'     => 7, // default 7 days
 
     'model' => [

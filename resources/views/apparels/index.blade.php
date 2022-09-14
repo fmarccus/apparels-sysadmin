@@ -98,7 +98,11 @@
                         </div>
                     </div>
                     <a class="btn btn-dark d-block mb-3" href="{{route('apparel.create')}}">Create new apparel</a>
-                    <a class="btn btn-light d-block mb-3" href="{{route('apparel.csvpage')}}">Upload a CSV</a>
+                    <a class="btn btn-light d-block mb-3" href="{{route('apparel.csvpage')}}">Upload CSV</a>
+                    <a class="btn btn-info d-block mb-3" href="{{route('apparel.imagepage')}}">Upload Images used in csv</a>
+                    <a class="btn btn-warning d-block mb-3" href="{{route('apparel.documentpage')}}">Upload documents</a>
+
+
                 </div>
                 <div class="col-sm-10">
                     <div class="row">

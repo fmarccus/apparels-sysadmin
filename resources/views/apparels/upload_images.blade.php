@@ -9,7 +9,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Upload CSV') }}
+            {{ __('Upload Images') }}
         </h2>
     </x-slot>
     <section class="pt-5 pb-5">
@@ -27,16 +27,28 @@
                 @endif
                 <div class="col-sm-7">
                     <a href="{{route('apparel.index')}}" class="btn btn-light fw-bold mb-3">Return to Inventory</a>
-                    <p class="card-text mb-3">Upload the CSV file that contains apparel data to be saved to the database</p>
+                    <p class="card-text mb-3">Upload the images associated to the CSV file you imported</p>
                     <hr>
-                    <form action="{{route('apparel.import')}}" method="post" enctype="multipart/form-data">
+
+                    <form class="mt-5" action="{{route('apparel.upload_images')}}" method="post" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="imgPreview"> </div>
                         <div class="mb-3">
-                            <label for="file" class="form-label">CSV File</label>
-                            <input type="file" class="form-control shadow-none @error('file') is-invalid @enderror" value="{{old('file')}}" name="file" id="file">
-                            @error('file')
-                            <small id="helpId" class="form-text text-danger">{{$message}}</small>
-                            @enderror
+                            <div class="mb-3">
+                                <label for="imageFile[]" class="form-label">Upload images used in the CSV file</label>
+                                <input type="file" class="form-control shadow-none @error('imageFile[]') is-invalid @enderror" name="imageFile[]" id="images" multiple="multiple">
+
+                                @if (count($errors) > 0)
+                                <div class="">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <small id="helpId" class="form-text text-danger">{{$error}}</small>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-dark float-end">Submit</button>
                     </form>

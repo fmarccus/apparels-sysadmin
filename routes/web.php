@@ -4,6 +4,8 @@ use App\Http\Controllers\ApparelController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ChartJSController;
+use App\Http\Controllers\DocumentController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +48,14 @@ Route::get('apparels/create', [ApparelController::class, 'create'])->name('appar
 Route::post('apparels/store', [ApparelController::class, 'store'])->name('apparel.store');
 Route::get('apparels/csvpage', [ApparelController::class, 'csvpage'])->name('apparel.csvpage');
 Route::post('apparels/import', [ApparelController::class, 'import'])->name('apparel.import');
+Route::get('apparels/upload_images', [ApparelController::class, 'imagepage'])->name('apparel.imagepage');
+Route::post('apparels/upload_images/store', [ApparelController::class, 'upload_images'])->name('apparel.upload_images');
+Route::get('apparels/upload_documents', [DocumentController::class, 'upload'])->name('apparel.documentpage');
+Route::post('apparels/store_documents', [DocumentController::class, 'store'])->name('apparel.documentstore');
+Route::get('apparels/documents', [DocumentController::class, 'index'])->name('apparel.documentindex');
+Route::get('apparels/documents/{document}', [DocumentController::class, 'preview'])->name('apparel.preview');
+
+
 Route::get('apparels/edit/{id}', [ApparelController::class, 'edit'])->name('apparel.edit');
 Route::post('apparels/update/{id}', [ApparelController::class, 'update'])->name('apparel.update');
 Route::get('apparels/destroy/{id}', [ApparelController::class, 'destroy'])->name('apparel.destroy');

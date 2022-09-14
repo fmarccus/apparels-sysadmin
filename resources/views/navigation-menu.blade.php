@@ -150,6 +150,10 @@
                             <x-jet-dropdown-link href="{{ route('messages.create') }}" :active="request()->routeIs('messages.create')" class="text-decoration-none">
                                 {{ __('Contact Us') }}
                             </x-jet-dropdown-link>
+                            @elseif(Auth::user()->userType == 0)
+                            <x-jet-dropdown-link href="{{ route('apparel.documentindex') }}" :active="request()->routeIs('messages.create')" class="text-decoration-none">
+                                {{ __('Documents') }}
+                            </x-jet-dropdown-link>
                             @endif
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">

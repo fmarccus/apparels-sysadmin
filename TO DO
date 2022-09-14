@@ -1,0 +1,8 @@
+<!-- allow multiple image upload but only png, jpeg, jpg. Max size is 4mb -->
+<!-- allow upload of docx and pdf files. max size is 2mb -->
+<!-- allow upload of csv file -->
+<!-- preview for PDF ONLY. DOCX is impossible sa browser at local server. Need online through office live or google docs -->
+<!-- track user interactions sa website, get browser data, get IP address -->
+backup entire database one click or auto back up everyday 
+lockout user after X attempts
+virtualization shit sa ubuntu server na di pa naeexplain at turo ni sir
